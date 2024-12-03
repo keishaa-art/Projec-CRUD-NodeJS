@@ -1,0 +1,100 @@
+<div class="container mt-3">
+  <div class="row">
+      <div class="col-md-6">
+        <style>
+          body {
+              margin-top: 60px; /* Sesuaikan dengan tinggi navbar */
+          }
+      </style>
+          <h2><b>Form Ubah Data Contact</b></h2>
+          <% if (typeof errors != 'undefined') { %> 
+            <div class="alert alert-danger" role="alert">
+              <ul>
+                <% errors.forEach(error => { %>
+                  <li><%= error.msg %></li>
+                <% }) %>
+              </ul>
+            </div>              
+          <% } %>
+          <form method="post" action="/datasiswa?_method=PUT">
+              <input type="hidden" name="nisn" value="<%= data.nisn %>" />
+              <!-- Nama field (read-only) -->
+              <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" value="<%= data.nama %>" readonly />
+              </div>
+
+              <!-- Jenis Kelamin field (read-only) -->
+              <div class="mb-3">
+                  <label for="jk" class="form-label">Jenis Kelamin</label>
+                  <input type="text" class="form-control" id="jk" name="jk" value="<%= data.jk %>" readonly />
+              </div>
+
+              <!-- NISN field (read-only) -->
+              <div class="mb-3">
+                <label for="nisn" class="form-label">NISN</label>
+                <input type="text" class="form-control" id="nisn" name="nisn" value="<%= data.nisn %>" readonly />
+              </div>
+
+              <!-- NIK field (read-only) -->
+              <div class="mb-3">
+                <label for="nik" class="form-label">NIK</label>
+                <input type="text" class="form-control" id="nik" name="nik" value="<%= data.nik %>" readonly />
+              </div>
+
+              <!-- No.KK field (read-only) -->
+              <div class="mb-3">
+                <label for="nokk" class="form-label">No.KK</label>
+                <input type="text" class="form-control" id="nokk" name="nokk" value="<%= data.nokk %>" readonly />
+              </div>
+
+              <!-- Tingkat Kelas field (editable) -->
+              <div class="mb-3">
+                <label for="tingkat" class="form-label">Tingkat Kelas Saat Ini</label>
+                <select class="form-select" name="tingkat" id="tingkat" required>
+                  <option selected><%= data.tingkat %></option>
+                  <option value="X">X</option>
+                  <option value="XI">XI</option>
+                  <option value="XII">XII</option>
+                </select>
+              </div> 
+
+              <!-- Rombel field (editable) -->
+              <div class="mb-3">
+                <label for="rombel" class="form-label">Rombel</label>
+                <select class="form-select" name="rombel" id="rombel" required>
+                  <option selected><%= data.rombel %></option>
+                  <option value="PPLG 1">PPLG 1</option>
+                  <option value="PPLG 2">PPLG 2</option>
+                  <option value="RPL 1">RPL 1</option>
+                  <option value="RPL 2">RPL 2</option>
+                </select>
+              </div>
+
+              <!-- Tanggal Masuk field (editable) -->
+              <div class="mb-3">
+                <label for="tgl_masuk" class="form-label">Tanggal Masuk</label>
+                <input type="date" class="form-control" id="tgl_masuk" name="tgl_masuk" value="<%= data.tgl_masuk %>"/>
+              </div>
+
+              <!-- Terdaftar Sebagai field (editable) -->
+              <div class="mb-3">
+                <label for="terdaftar" class="form-label">Terdaftar Sebagai</label>
+                <select class="form-select" name="terdaftar" id="terdaftar" required>
+                  <option selected><%= data.terdaftar %></option>
+                  <option value="Siswa Baru">Siswa Baru</option>
+                  <option value="Pindahan">Pindahan</option>
+                </select>
+              </div>
+
+              <!-- Tempat Lahir field (read-only) -->
+              <div class="mb-3">
+                <label for="ttl" class="form-label">Tempat Lahir</label>
+                <input type="text" class="form-control" id="ttl" name="ttl" value="<%= data.ttl %>" readonly />
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Edit Data Contact</button>
+          </form>
+      </div>
+  </div>
+</div>
